@@ -4,7 +4,7 @@ var points, vel, wireframe, lines;
 var linesGeometry, pointsGeometry, frameGeometry;
 var cubeLength = 1000;
 var pointSize = 15;
-var threshold = 1000;
+var threshold = 2000;
 
 window.onload = () => {
   init();
@@ -58,7 +58,7 @@ function init() {
     color.setRGB(vx, vy, vz);
     colors.push(color.r, color.g, color.b);
     //velocities
-    let speed = Math.random() * 10;
+    let speed = 5;
     vel.push(speed, speed, speed);
   }
   pointsGeometry.addAttribute(
@@ -87,7 +87,7 @@ function init() {
 
   wireframe = new THREE.LineSegments(geo, mat);
   wireframe.position.set(cubeLength / 2, cubeLength / 2, cubeLength / 2);
-  scene.add(wireframe);
+  //   scene.add(wireframe);
 
   //Line stuff
   var maxLines = new Float32Array(particles * 6 * particles);
@@ -147,7 +147,7 @@ function render() {
             0
           );
           linesToDraw.push(p[i], p[i + 1], p[i + 2], p[j], p[j + 1], p[j + 2]);
-          colors.push(color, color, color);
+          colors.push(color, 255, 255);
         }
       }
     }
@@ -173,7 +173,7 @@ function render() {
   lines.geometry.setDrawRange(0, linesToDraw.length);
 
   points.geometry.computeBoundingSphere();
-
+  lines.geometry.computeBoundingSphere();
   controls.update();
   renderer.render(scene, camera);
 }
