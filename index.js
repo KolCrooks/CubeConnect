@@ -90,8 +90,8 @@ function init() {
   scene.add(wireframe);
 
   //Line stuff
-  var maxLines = new Float32Array(particles * 6 * 10);
-  var maxColors = new Float32Array(particles * 3 * 10);
+  var maxLines = new Float32Array(particles * 6 * particles);
+  var maxColors = new Float32Array(particles * 3 * particles);
 
   linesGeometry = new THREE.BufferGeometry();
   linesGeometry.addAttribute(
