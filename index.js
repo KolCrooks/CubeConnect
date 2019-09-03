@@ -59,7 +59,11 @@ function init() {
     colors.push(color.r, color.g, color.b);
     //velocities
     let speed = 5;
-    vel.push(speed, speed, speed);
+    vel.push(
+      speed * (Math.random() > 0.5 ? -1 : 1),
+      speed * (Math.random() > 0.5 ? -1 : 1),
+      speed * (Math.random() > 0.5 ? -1 : 1)
+    );
   }
   pointsGeometry.addAttribute(
     "position",
